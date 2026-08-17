@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <!-- 移动端适配关键：
+         - viewport-fit=cover 支持刘海屏/全面屏安全区
+         - user-scalable=no + maximum-scale 防止双指缩放(游戏触屏时误缩放)
+         - initial-scale=1.0 确保 1:1 CSS 像素渲染
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#050503">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <title>钢铁迷宫：坦克突击</title>
+    <link rel="stylesheet" href="styles.css?v=3">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>.resume-home-link{position:fixed;top:max(12px,env(safe-area-inset-top));left:max(12px,env(safe-area-inset-left));z-index:9999;display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 14px;border:2px solid #070707;color:#070707;background:#d9ff00;box-shadow:5px 5px 0 #964cff;font:900 11px/1 Arial,"PingFang SC",sans-serif;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:.18s transform,.18s box-shadow}.resume-home-link:hover,.resume-home-link:focus-visible{transform:translate(-2px,-2px);box-shadow:7px 7px 0 #964cff;outline:2px solid #fff;outline-offset:2px}</style>
+</head>
+<body>
+    <a class="resume-home-link" href="../../index.html#acid-play" aria-label="返回张鹏岳个人主页">← 返回个人主页</a>
+    <div id="game-container">
+        <canvas id="game-canvas" width="960" height="640"></canvas>
+        <div id="vignette"></div>
+        <div id="hud-overlay"></div>
+        <div id="scene-container"></div>
+
+        <!-- 移动端触控：虚拟摇杆 + 射击按钮 (JS 在触控设备上显示) -->
+        <div class="mobile-controls" id="mobile-controls" aria-hidden="true">
+            <div class="joystick-container" id="joystick-container">
+                <div class="joystick-bg"></div>
+                <div class="joystick-knob" id="joystick-knob"></div>
+            </div>
+            <div class="shoot-btn-container" id="shoot-btn-container">
+                <button class="shoot-btn" id="shoot-btn" aria-label="射击"></button>
+            </div>
+        </div>
+
+        <!-- 竖屏提示：仅在竖屏且移动端显示 -->
+        <div class="orientation-hint" id="orientation-hint" role="dialog" aria-label="请旋转至横屏">
+            <div class="orientation-hint-icon" aria-hidden="true"></div>
+            <h3>请将设备旋转至横屏</h3>
+            <p>为获得最佳游戏体验<br>建议在横屏模式下进行游戏</p>
+            <button class="hint-close" id="orientation-hint-close" type="button">仍以竖屏继续</button>
+        </div>
+    </div>
+    <script src="src/config.js?v=3"></script>
+    <script src="src/utils.js?v=3"></script>
+    <script src="src/input.js?v=3"></script>
+    <script src="src/audio.js?v=3"></script>
+    <script src="src/maze.js?v=3"></script>
+    <script src="src/effects.js?v=3"></script>
+    <script src="src/pathfinding.js?v=3"></script>
+    <script src="src/tank.js?v=3"></script>
+    <script src="src/playerTank.js?v=3"></script>
+    <script src="src/enemyTank.js?v=3"></script>
+    <script src="src/hud.js?v=3"></script>
+    <script src="src/scenes.js?v=3"></script>
+    <script src="game.js?v=3"></script>
+</body>
+</html>
